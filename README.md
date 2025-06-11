@@ -6,3 +6,5 @@ This was built via the use of Next.js and FantaCSS whilst connected to a Firebas
 VSCode and React libraries are used as well.
 
 Deployed on Render: https://expenny-vers-01277.onrender.com/
+
+Instructor: James McArthur
