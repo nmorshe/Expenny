@@ -8,6 +8,7 @@ import "../globals.css";
 import SubscriptionForm from "@/components/SubscriptionForm";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { Suspense } from 'react';
 
 const blankSubscription = {
         name: '',
@@ -31,7 +32,15 @@ const DashboardPage = () => {
     const [isAddEntry, setAddEntry] = useState(false);
 
 
-    const [formData, setFormData] = useState(blankSubscription)
+    const [formData, setFormData] = useState(blankSubscription);
+
+    const Fallback = () => {
+        return (
+            <div>
+                <p>Loading...</p>
+            </div>
+        )
+    }
 
     const handleChangeInput = (e) => {
         const newData = {
@@ -68,7 +77,10 @@ const DashboardPage = () => {
 
     if (isAuthenticated === false) {
         return (
-            <Login />
+            <Suspense fallback={<Fallback />}>
+                <Login />
+            </Suspense>
+            
         )
     }
   
